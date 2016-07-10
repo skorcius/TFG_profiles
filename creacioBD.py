@@ -7,11 +7,11 @@ import csv
 
 import _mysql_exceptions
 from cvxopt import info
-from subprocess import *
+
 
 infoDB = {
     'user': 'joan',
-    'passwd': '1234',
+    'passwd': '',
     'host': 'localhost',
     'db': 'profiles'
 }

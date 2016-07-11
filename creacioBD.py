@@ -12,7 +12,7 @@ from cvxopt import info
 ## GLobal data
 infoDB = {
     'user': 'joan',
-    'passwd': '',
+    'passwd': '1234',
     'host': 'localhost',
     'db': 'profiles'
 }
@@ -36,7 +36,7 @@ def run_query(query=''):
     return data
 
 
-def convert_csv_to_xml(path='', xmlDataFiles=[]):
+def convert_csv_to_xml(path='', xmlDataFiles={}):
 
     tmp = path.split('/')
     filename = tmp[len(tmp)-1]
@@ -45,13 +45,10 @@ def convert_csv_to_xml(path='', xmlDataFiles=[]):
     csvfile = open(path, 'rt')
     xmlfile = open(xml, 'w')
 
-    xmlDataFiles.append(xml)
-
     xmlfile.write('<?xml version="1.0"?>' + "\n")
     xmlfile.write('<csv_data>' + '\n')
 
     try:
-        header=""
         reader = csv.reader(csvfile, delimiter=",")
 
         rowNum = 0
@@ -68,8 +65,27 @@ def convert_csv_to_xml(path='', xmlDataFiles=[]):
             rowNum += 1
 
         #cargar datos para el header obtenido
-        #if header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY_PROVA,CONV_PROVA,FASE,CODI_MATERIA,NOM_MATERIA,PRESENTAT,NOTA":
         xmlfile.write('</csv_data>')
+
+        header=""
+        for data in tags:
+            header = header + data + ','
+        header = header[0:len(header) - 1]
+
+
+        if header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY_PROVA,CONV_PROVA,FASE,CODI_MATERIA,NOM_MATERIA,PRESENTAT,NOTA":
+            xmlDataFiles['a_sel'] = xml
+        elif header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY_INICI_ESTUDIS,ORDRE_PREFERENCIA_PREINSCRIPCIO," \
+                "NOTA_ACCES_PREINSCRIPCIO,TIPUS_ACCES,NOM_TIPUS,SUBACCES,NOM_SUBACCES,ANY_ACCES,CONV_ACCES," \
+                "UNIVERSITAT_PROVA,NOTA_PROVA,ANY_BATXILLER,CONV_BATXILLER,CENTRE_BATXILLER,MITJA_EXPEDIENT":
+            xmlDataFiles['d_acces'] = xml
+        elif header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY,CRED_MAT_TOTAL,CRED_1_MAT,CRED_2_MAT,CRED_3_MAT," \
+                        "CRED_SUPERATS,CRED_NO_SUPERAT,CRED_RECONEGUTS,CRED_PRESENTAT,CRED_NOPRESENTAT":
+            xmlDataFiles['d_matricula']=xml
+        elif header == "ID_ALU,PLA,NOM,CODI_RUCT,ASSIG,CURS,TIPUS,CREDITS,NUM_MATRIC,ANY,CONVOCATORIA," \
+                       "PRESENTAT,MHONOR,NOTA,QUALIFICACIO":
+            xmlDataFiles['l_acta'] = xml
+
     finally:
         csvfile.close()
         xmlfile.close()
@@ -96,6 +112,7 @@ def create_DB(nameDB="profiles"):
         conn.close()
 
     return loadInfo
+
 
 def create_Tables():
     conn = MySQLdb.connect(user=infoDB['user'], passwd=infoDB['passwd'], host=infoDB['host'], db=infoDB['db'])
@@ -203,6 +220,7 @@ def create_Tables():
     finally:
         conn.close()
 
+
 def insert_t_valorsInfo(valors=""):
     i_query="INSERT INTO t_valors (valor) VALUES "
 
@@ -217,25 +235,28 @@ def insert_t_valorsInfo(valors=""):
     run_query(i_query)
 
 def insert_xml_to_bd(xmlDataFiles=[]):
-    
+    print
 
 
 
 
 
 def main():
-    xmlDataFiles = []
+    xmlDataFiles = {'d_acces' : 'dades_acces.xml', 'd_matricula' : 'dades_matricula.xml',
+                    'l_acta' : 'linies_acta.xml', 'a_sel' : 'assig_sel.xml'}
 
     path = "/home/joan/Documents/"
 
-    create_DB()
+    load_info = create_DB()
 
-    convert_csv_to_xml(path+"assig_sel.csv", xmlDataFiles)
-    convert_csv_to_xml(path + "dades_acces.csv", xmlDataFiles)
-    convert_csv_to_xml(path + "dades_matricula.csv", xmlDataFiles)
-    convert_csv_to_xml(path + "linies_acta.csv", xmlDataFiles)
+    if load_info:
+        convert_csv_to_xml(path+"assig_sel.csv", xmlDataFiles)
+        convert_csv_to_xml(path + "dades_acces.csv", xmlDataFiles)
+        convert_csv_to_xml(path + "dades_matricula.csv", xmlDataFiles)
+        convert_csv_to_xml(path + "linies_acta.csv", xmlDataFiles)
 
-    insert_xml_to_bd(xmlDataFiles)
+        insert_xml_to_bd(xmlDataFiles)
+
 
 
 main()

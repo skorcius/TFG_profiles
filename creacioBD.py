@@ -9,6 +9,7 @@ import _mysql_exceptions
 from cvxopt import info
 from subprocess import *
 
+## GLobal data
 infoDB = {
     'user': 'joan',
     'passwd': '1234',
@@ -16,6 +17,7 @@ infoDB = {
     'db': 'profiles'
 }
 
+## ----------------------------
 
 def run_query(query=''):
     conn = MySQLdb.connect(**infoDB)  # Conectar a la base de datos
@@ -34,16 +36,45 @@ def run_query(query=''):
     return data
 
 
-def import_Data(path=''):
-    file = open(path, 'rt')
+def convert_csv_to_xml(path='', xmlDataFiles=[]):
+
+    tmp = path.split('/')
+    filename = tmp[len(tmp)-1]
+
+    xml=filename[0:len(filename)-3]+"xml"
+    csvfile = open(path, 'rt')
+    xmlfile = open(xml, 'w')
+
+    xmlDataFiles.append(xml)
+
+    xmlfile.write('<?xml version="1.0"?>' + "\n")
+    xmlfile.write('<csv_data>' + '\n')
+
     try:
-        reader = csv.reader(file, delimiter=",")
+        header=""
+        reader = csv.reader(csvfile, delimiter=",")
+
+        rowNum = 0
         for row in reader:
-            for j in row:
-                print j,",",
-            print
+            if rowNum == 0:
+                tags = row
+                for i in range(len(tags)):
+                    tags[i] = tags[i].replace(' ', '_')
+            else:
+                xmlfile.write('<row>' + '\n')
+                for i in range(len(tags)):
+                    xmlfile.write('     '+'<'+tags[i] + '>'+ row[i] + '</' + tags[i] + '>' + '\n')
+                xmlfile.write('</row>'+'\n')
+            rowNum += 1
+
+        #cargar datos para el header obtenido
+        #if header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY_PROVA,CONV_PROVA,FASE,CODI_MATERIA,NOM_MATERIA,PRESENTAT,NOTA":
+        xmlfile.write('</csv_data>')
     finally:
-        file.close()
+        csvfile.close()
+        xmlfile.close()
+
+
 
 def create_DB(nameDB="profiles"):
     infoDB['db'] = nameDB
@@ -185,11 +216,26 @@ def insert_t_valorsInfo(valors=""):
 
     run_query(i_query)
 
+def insert_xml_to_bd(xmlDataFiles=[]):
+    
+
+
+
 
 
 def main():
+    xmlDataFiles = []
+
+    path = "/home/joan/Documents/"
 
     create_DB()
+
+    convert_csv_to_xml(path+"assig_sel.csv", xmlDataFiles)
+    convert_csv_to_xml(path + "dades_acces.csv", xmlDataFiles)
+    convert_csv_to_xml(path + "dades_matricula.csv", xmlDataFiles)
+    convert_csv_to_xml(path + "linies_acta.csv", xmlDataFiles)
+
+    insert_xml_to_bd(xmlDataFiles)
 
 
 main()

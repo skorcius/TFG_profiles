@@ -7,9 +7,10 @@ import csv
 
 import _mysql_exceptions
 from cvxopt import info
-
+from xml.dom import minidom
 
 ## GLobal data
+	#Predefined info about MySQL
 infoDB = {
     'user': 'joan',
     'passwd': '1234',
@@ -234,7 +235,7 @@ def insert_t_valorsInfo(valors=""):
 
     run_query(i_query)
 
-def insert_xml_to_bd(xmlDataFiles=[]):
+def insert_xml_to_bd(xmlDataFiles={}):
     print
 
 
@@ -256,6 +257,8 @@ def main():
         convert_csv_to_xml(path + "linies_acta.csv", xmlDataFiles)
 
         insert_xml_to_bd(xmlDataFiles)
+    else:
+        print "No s'ha de crear la BD"
 
 
 

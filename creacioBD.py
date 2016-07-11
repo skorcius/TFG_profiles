@@ -4,6 +4,7 @@ from _codecs import utf_8_decode
 
 import MySQLdb
 import csv
+import os.path
 
 import _mysql_exceptions
 from cvxopt import info
@@ -132,6 +133,8 @@ def create_Tables():
 	                any2 int not null,
 	                id int auto_increment primary key,
 	                conv int not null,
+	                sub_acces int,
+	                nom_subacces varchar(200),
 	                universitat varchar(50),
 	                foreign key (conv) references t_valors(id) )"""
         cursor.execute(c_query)
@@ -160,6 +163,8 @@ def create_Tables():
 	                centre varchar(150),
 	                id_prova int,
                 	conv_batx int not null,
+                	anyBat1 int,
+                	anyBat2 int,
 	                foreign key (id_prova) references p_acces(id),
 	                foreign key (conv_batx) references t_valors(id) )"""
         cursor.execute(c_query)
@@ -236,14 +241,19 @@ def insert_t_valorsInfo(valors=""):
     run_query(i_query)
 
 def insert_xml_to_bd(xmlDataFiles={}):
-    print
+    d_acces = minidom.parse(xmlDataFiles['d_acces'])
+    d_matricula = minidom.parse(xmlDataFiles['d_matricula'])
+    a_sel = minidom.parse(xmlDataFiles['a_sel'])
+    l_acta = minidom.parse(xmlDataFiles['l_acta'])
+
+
 
 
 
 
 
 def main():
-    xmlDataFiles = {'d_acces' : 'dades_acces.xml', 'd_matricula' : 'dades_matricula.xml',
+    xmlDataFiles = {'d_acces' : 'dades_acces.xml', 'd_matricula' : 'd_matricula.xml',
                     'l_acta' : 'linies_acta.xml', 'a_sel' : 'assig_sel.xml'}
 
     path = "/home/joan/Documents/"
@@ -251,10 +261,14 @@ def main():
     load_info = create_DB()
 
     if load_info:
-        convert_csv_to_xml(path+"assig_sel.csv", xmlDataFiles)
-        convert_csv_to_xml(path + "dades_acces.csv", xmlDataFiles)
-        convert_csv_to_xml(path + "dades_matricula.csv", xmlDataFiles)
-        convert_csv_to_xml(path + "linies_acta.csv", xmlDataFiles)
+        if os.path.exists(path + "assig_sel.csv"):
+            convert_csv_to_xml(path + "assig_sel.csv", xmlDataFiles)
+        if os.path.exists(path + "dades_acces.csv"):
+            convert_csv_to_xml(path + "dades_acces.csv", xmlDataFiles)
+        if os.path.exists(path + "dades_matricula.csv"):
+            convert_csv_to_xml(path + "dades_matricula.csv", xmlDataFiles)
+        if os.path.exists(path + "linies_acta.csv"):
+            convert_csv_to_xml(path + "linies_acta.csv", xmlDataFiles)
 
         insert_xml_to_bd(xmlDataFiles)
     else:

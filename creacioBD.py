@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from _codecs import utf_8_decode
-
 import MySQLdb
 import csv
-import os.path
 
 import _mysql_exceptions
-from cvxopt import info
-from xml.dom import minidom
+from enum import Enum
+
 
 ## GLobal data
 	#Predefined info about MySQL
@@ -19,9 +16,30 @@ infoDB = {
     'db': 'profiles'
 }
 
+
 ## ----------------------------
 
 def run_query(query=''):
+    try:
+        conn = MySQLdb.connect(**infoDB)  # Conectar a la base de datos
+        cursor = conn.cursor()  # Crear un cursor
+        cursor.execute(query)  # Ejecutar una consulta
+
+        if query.upper().startswith('SELECT'):
+            data = cursor.fetchall()  # Traer los resultados de un select
+        else:
+            conn.commit()  # Hacer efectiva la escritura de datos
+            data = None
+
+        cursor.close()  # Cerrar el cursor
+        conn.close()  # Cerrar la conexión
+
+        return data
+    except _mysql_exceptions.DataError:
+        print "ERROR: No se ha podido ejecutar la sentencia '%s' " %query
+
+
+def exist_in_db(query='', data=[]):
     conn = MySQLdb.connect(**infoDB)  # Conectar a la base de datos
     cursor = conn.cursor()  # Crear un cursor
     cursor.execute(query)  # Ejecutar una consulta
@@ -29,91 +47,128 @@ def run_query(query=''):
     if query.upper().startswith('SELECT'):
         data = cursor.fetchall()  # Traer los resultados de un select
     else:
-        conn.commit()  # Hacer efectiva la escritura de datos
         data = None
 
     cursor.close()  # Cerrar el cursor
     conn.close()  # Cerrar la conexión
 
-    return data
+    if len(data) == 0:
+        return False
+    else:
+        return True
 
 
-def convert_csv_to_xml(path='', xmlDataFiles={}):
+def prepare_info_for_db(path="", files=[]):
 
-    tmp = path.split('/')
-    filename = tmp[len(tmp)-1]
+    for file in files:
+        filename=path+file
 
-    xml=filename[0:len(filename)-3]+"xml"
-    csvfile = open(path, 'rt')
-    xmlfile = open(xml, 'w')
+        csvFile = csv.reader(open(filename, 'r'), delimiter=",")
 
-    xmlfile.write('<?xml version="1.0"?>' + "\n")
-    xmlfile.write('<csv_data>' + '\n')
+        try:
+            rowNum=0
+            header=""
+            for row in csvFile:
+                for item in row:
+                    header = header + item + ','
+                break
+            header = header[0:len(header)-1]
 
-    try:
-        reader = csv.reader(csvfile, delimiter=",")
+            if header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY_PROVA,CONV_PROVA,FASE,CODI_MATERIA,NOM_MATERIA,PRESENTAT,NOTA":
+                inserts_assig_sel(csvFile)
+            elif header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY_INICI_ESTUDIS,ORDRE_PREFERENCIA_PREINSCRIPCIO," \
+                           "NOTA_ACCES_PREINSCRIPCIO,TIPUS_ACCES,NOM_TIPUS,SUBACCES,NOM_SUBACCES,ANY_ACCES,CONV_ACCES," \
+                           "UNIVERSITAT_PROVA,NOTA_PROVA,ANY_BATXILLER,CONV_BATXILLER,CENTRE_BATXILLER,MITJA_EXPEDIENT":
+                inserts_dades_acces(csvFile)
+            elif header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY,CRED_MAT_TOTAL,CRED_1_MAT,CRED_2_MAT,CRED_3_MAT," \
+                           "CRED_SUPERATS,CRED_NO_SUPERAT,CRED_RECONEGUTS,CRED_PRESENTAT,CRED_NOPRESENTAT":
+                inserts_dades_matricula(csvFile)
+            elif header == "ID_ALU,PLA,NOM,CODI_RUCT,ASSIG,CURS,TIPUS,CREDITS,NUM_MATRIC,ANY,CONVOCATORIA," \
+                           "PRESENTAT,MHONOR,NOTA,QUALIFICACIO":
+                inserts_lines_acta(csvFile)
 
-        rowNum = 0
-        for row in reader:
-            if rowNum == 0:
-                tags = row
-                for i in range(len(tags)):
-                    tags[i] = tags[i].replace(' ', '_')
-            else:
-                xmlfile.write('<row>' + '\n')
-                for i in range(len(tags)):
-                    xmlfile.write('     '+'<'+tags[i] + '>'+ row[i] + '</' + tags[i] + '>' + '\n')
-                xmlfile.write('</row>'+'\n')
-            rowNum += 1
-
-        #cargar datos para el header obtenido
-        xmlfile.write('</csv_data>')
-
-        header=""
-        for data in tags:
-            header = header + data + ','
-        header = header[0:len(header) - 1]
+        except IOError:
+            print "ERROR: Fichero no encontrado"
 
 
-        if header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY_PROVA,CONV_PROVA,FASE,CODI_MATERIA,NOM_MATERIA,PRESENTAT,NOTA":
-            xmlDataFiles['a_sel'] = xml
-        elif header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY_INICI_ESTUDIS,ORDRE_PREFERENCIA_PREINSCRIPCIO," \
-                "NOTA_ACCES_PREINSCRIPCIO,TIPUS_ACCES,NOM_TIPUS,SUBACCES,NOM_SUBACCES,ANY_ACCES,CONV_ACCES," \
-                "UNIVERSITAT_PROVA,NOTA_PROVA,ANY_BATXILLER,CONV_BATXILLER,CENTRE_BATXILLER,MITJA_EXPEDIENT":
-            xmlDataFiles['d_acces'] = xml
-        elif header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY,CRED_MAT_TOTAL,CRED_1_MAT,CRED_2_MAT,CRED_3_MAT," \
-                        "CRED_SUPERATS,CRED_NO_SUPERAT,CRED_RECONEGUTS,CRED_PRESENTAT,CRED_NOPRESENTAT":
-            xmlDataFiles['d_matricula']=xml
-        elif header == "ID_ALU,PLA,NOM,CODI_RUCT,ASSIG,CURS,TIPUS,CREDITS,NUM_MATRIC,ANY,CONVOCATORIA," \
-                       "PRESENTAT,MHONOR,NOTA,QUALIFICACIO":
-            xmlDataFiles['l_acta'] = xml
+def enum(**enums):
+    return type('Enum', (), enums)
 
-    finally:
-        csvfile.close()
-        xmlfile.close()
 
+def get_dates(date=""):
+    dates = date.split('-')
+    if len(dates) == 2:
+        dates[1] = dates[0][0:len(dates[0])-len(dates[1])] + dates[1]
+        return dates
+    return None
+
+
+
+def inserts_dades_acces(reader=[]):
+    CNT = enum(ID=0, PLA=1, NOM=2, C_PLA=3, ANY_I_EST = 4, ORDRE_PREF = 5, NOTA_A_PREINS=6, TIPUS_ACCES=7,
+                 NOM_TIPUS=8, SUBACCES=9, NOM_SUBACCES=10, ANY_ACCES=11, CONV_ACCES=12, UNI=13, NOTA_PROVA=14,
+                 ANY_BATX = 15, CONV_BATX=16, CENTRE_BATX=17, MITJA_EXP=18)
+    VALORS = dict()
+
+    data = run_query("SELECT id, valor FROM t_valors")
+    for row in data:
+        VALORS.update({row[1] : row[0]})
+
+
+    for row in reader:
+        #Insertar el grau si no existeix
+        if not exist_in_db("SELECT * FROM grau where id_grau = %s" %row[CNT.C_PLA], data):
+            insert = "INSERT INTO grau (id_grau, nom, pla) VALUES  (%s, \"%s\", \"%s\")" \
+                     %(row[CNT.C_PLA], row[CNT.NOM], row[CNT.PLA])
+            run_query(insert)
+
+        #Comprobar si l'usuari existeix
+        if not exist_in_db("SELECT id_alumne, id_prova FROM alumne WHERE id_alumne = %s" %row[CNT.ID], data):
+
+            if row[CNT.TIPUS_ACCES] == 1:
+                dates = get_dates(row[CNT.ANY_ACCES])
+
+                insert = "INSERT INTO p_acces (universitat, sub_acces, nom_subacces, nota, any1, any2, conv) VALUES " \
+                     "(\"%s\", %s,\"%s\",%s, %s, %s, %s)" %(row[CNT.UNI], row[CNT.SUBACCES], row[CNT.NOM_SUBACCES],
+                                            row[CNT.NOTA_PROVA], dates[0], dates[1], VALORS.get(row[CNT.CONV_ACCES]))
+                run_query(insert)
+
+
+
+
+def inserts_assig_sel(csvFile):
+    print
+
+
+def inserts_dades_matricula(csvFile):
+    print
+
+
+def inserts_lines_acta(csvFile):
+    print
 
 
 def create_DB(nameDB="profiles"):
     infoDB['db'] = nameDB
     conn = MySQLdb.connect(user=infoDB['user'], passwd=infoDB['passwd'], host=infoDB['host'])
-    loadInfo = False
+    dbExist = False
     try:
         cursor=conn.cursor()
         sql="CREATE DATABASE %s" % nameDB
         cursor.execute(sql)
+        cursor.close()
 
         create_Tables()
 
         insert_t_valorsInfo("FEB JUN SET GEN ESP FBA OBL OPT TFG")
 
-        loadInfo=True                     #La BD no existe, debemos cargar la info en la BD
+        dbExist=False                     #La BD no existe, debemos cargar la info en la BD
     except _mysql_exceptions.DatabaseError:
-        loadInfo=False                    #La BD ya existe, no cargar info en la BD
+        dbExist=True                    #La BD ya existe, no cargar info en la BD
     finally:
         conn.close()
 
-    return loadInfo
+    return dbExist
 
 
 def create_Tables():
@@ -161,6 +216,7 @@ def create_Tables():
 	                id_alumne int auto_increment primary key,
                 	mitja_exp float not null,
 	                centre varchar(150),
+	                nota_acces_preinscripcio float,
 	                id_prova int,
                 	conv_batx int not null,
                 	anyBat1 int,
@@ -222,7 +278,7 @@ def create_Tables():
 	                foreign key (id_assig) references assig(id_assig),
 	                foreign key (conv) references t_valors(id) )"""
         cursor.execute(c_query)
-
+        cursor.close()
     finally:
         conn.close()
 
@@ -240,40 +296,15 @@ def insert_t_valorsInfo(valors=""):
 
     run_query(i_query)
 
-def insert_xml_to_bd(xmlDataFiles={}):
-    d_acces = minidom.parse(xmlDataFiles['d_acces'])
-    d_matricula = minidom.parse(xmlDataFiles['d_matricula'])
-    a_sel = minidom.parse(xmlDataFiles['a_sel'])
-    l_acta = minidom.parse(xmlDataFiles['l_acta'])
-
-
-
-
-
-
-
 def main():
-    xmlDataFiles = {'d_acces' : 'dades_acces.xml', 'd_matricula' : 'd_matricula.xml',
-                    'l_acta' : 'linies_acta.xml', 'a_sel' : 'assig_sel.xml'}
+    files = ['assig_sel.csv','dades_acces.csv', 'dades_matricula.csv', 'linies_acta.csv']
 
-    path = "/home/joan/Documents/"
+    path = ""
 
-    load_info = create_DB()
-
-    if load_info:
-        if os.path.exists(path + "assig_sel.csv"):
-            convert_csv_to_xml(path + "assig_sel.csv", xmlDataFiles)
-        if os.path.exists(path + "dades_acces.csv"):
-            convert_csv_to_xml(path + "dades_acces.csv", xmlDataFiles)
-        if os.path.exists(path + "dades_matricula.csv"):
-            convert_csv_to_xml(path + "dades_matricula.csv", xmlDataFiles)
-        if os.path.exists(path + "linies_acta.csv"):
-            convert_csv_to_xml(path + "linies_acta.csv", xmlDataFiles)
-
-        insert_xml_to_bd(xmlDataFiles)
-    else:
-        print "No s'ha de crear la BD"
-
+    dbExist = create_DB()
+    dbExist = False
+    if not dbExist:
+        prepare_info_for_db(path, files)
 
 
 main()

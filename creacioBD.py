@@ -131,6 +131,12 @@ def inserts_dades_acces(reader=[]):
 
 
     for row in reader:
+
+        #Tratamiento de valores nulos
+        for i in range(len(row)):
+            if row[i] == '':
+                row[i] = 'null'
+
         #Insertar el grau si no existeix
         if not exist_in_db("SELECT * FROM grau where id_grau = %s" %row[CNT.C_PLA], data):
             insert = "INSERT INTO grau (id_grau, nom, pla) VALUES  (%s, \"%s\", \"%s\")" \
@@ -140,14 +146,22 @@ def inserts_dades_acces(reader=[]):
         #Comprobar si l'usuari existeix
         if not exist_in_db("SELECT id_alumne, id_prova FROM alumne WHERE id_alumne = %s" %row[CNT.ID], data):
 
+            #Insertar prova d'acces y usuari
             if row[CNT.TIPUS_ACCES] == '1':
                 dates = get_dates(row[CNT.ANY_ACCES])
 
                 insert = "INSERT INTO p_acces (universitat, sub_acces, nom_subacces, nota, any1, any2, conv) VALUES " \
                      "(\"%s\", %s,\"%s\",%s, %s, %s, %s)" %(row[CNT.UNI], row[CNT.SUBACCES], row[CNT.NOM_SUBACCES],
                                             row[CNT.NOTA_PROVA], dates[0], dates[1], VALORS.get(row[CNT.CONV_ACCES]))
-                id = execute_insert(insert)
-                print id
+                id_prova = execute_insert(insert)
+                dates = get_dates(row[CNT.ANY_BATX])
+
+                insert = "INSERT INTO alumne (id_alumne, centre, mitja_exp, nota_acces_preinscripcio, id_prova, " \
+                         "conv_batx, anyBat1, anyBat2) VALUES (%s, '%s', %s, %s, %s, %s, %s, %s)" %(row[CNT.ID],
+                         row[CNT.CENTRE_BATX], row[CNT.MITJA_EXP], row[CNT.NOTA_A_PREINS], id_prova,
+                         VALORS.get(row[CNT.CONV_BATX]), dates[0], dates[1])
+                execute_insert(insert)
+
 
 
 

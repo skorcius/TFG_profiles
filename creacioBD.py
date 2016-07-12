@@ -39,6 +39,21 @@ def run_query(query=''):
         print "ERROR: No se ha podido ejecutar la sentencia '%s' " %query
 
 
+def execute_insert(insert=''):
+    conn = MySQLdb.connect(**infoDB)  # Conectar a la base de datos
+    cursor = conn.cursor()  # Crear un cursor
+    cursor.execute(insert)  # Ejecutar una consulta
+
+    conn.commit()  # Hacer efectiva la escritura de datos
+
+    id = cursor.lastrowid
+
+    cursor.close()  # Cerrar el cursor
+    conn.close()  # Cerrar la conexión
+
+    return id
+
+
 def exist_in_db(query='', data=[]):
     conn = MySQLdb.connect(**infoDB)  # Conectar a la base de datos
     cursor = conn.cursor()  # Crear un cursor
@@ -125,13 +140,14 @@ def inserts_dades_acces(reader=[]):
         #Comprobar si l'usuari existeix
         if not exist_in_db("SELECT id_alumne, id_prova FROM alumne WHERE id_alumne = %s" %row[CNT.ID], data):
 
-            if row[CNT.TIPUS_ACCES] == 1:
+            if row[CNT.TIPUS_ACCES] == '1':
                 dates = get_dates(row[CNT.ANY_ACCES])
 
                 insert = "INSERT INTO p_acces (universitat, sub_acces, nom_subacces, nota, any1, any2, conv) VALUES " \
                      "(\"%s\", %s,\"%s\",%s, %s, %s, %s)" %(row[CNT.UNI], row[CNT.SUBACCES], row[CNT.NOM_SUBACCES],
                                             row[CNT.NOTA_PROVA], dates[0], dates[1], VALORS.get(row[CNT.CONV_ACCES]))
-                run_query(insert)
+                id = execute_insert(insert)
+                print id
 
 
 

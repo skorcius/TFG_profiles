@@ -54,7 +54,7 @@ def execute_insert(insert=''):
     return id
 
 
-def exist_in_db(query='', data=[]):
+def exist_in_db(query=''):
     conn = MySQLdb.connect(**infoDB)  # Conectar a la base de datos
     cursor = conn.cursor()  # Crear un cursor
     cursor.execute(query)  # Ejecutar una consulta
@@ -138,13 +138,13 @@ def inserts_dades_acces(reader=[]):
                 row[i] = 'null'
 
         #Insertar el grau si no existeix
-        if not exist_in_db("SELECT * FROM grau where id_grau = %s" %row[CNT.C_PLA], data):
+        if not exist_in_db("SELECT * FROM grau where id_grau = %s" %row[CNT.C_PLA]):
             insert = "INSERT INTO grau (id_grau, nom, pla) VALUES  (%s, \"%s\", \"%s\")" \
                      %(row[CNT.C_PLA], row[CNT.NOM], row[CNT.PLA])
             run_query(insert)
 
         #Comprobar si l'usuari existeix
-        if not exist_in_db("SELECT id_alumne, id_prova FROM alumne WHERE id_alumne = %s" %row[CNT.ID], data):
+        if not exist_in_db("SELECT id_alumne, id_prova FROM alumne WHERE id_alumne = %s" %row[CNT.ID]):
 
             #Insertar prova d'acces y usuari
             if row[CNT.TIPUS_ACCES] == '1':
@@ -157,17 +157,51 @@ def inserts_dades_acces(reader=[]):
                 dates = get_dates(row[CNT.ANY_BATX])
 
                 insert = "INSERT INTO alumne (id_alumne, centre, mitja_exp, nota_acces_preinscripcio, id_prova, " \
-                         "conv_batx, anyBat1, anyBat2) VALUES (%s, '%s', %s, %s, %s, %s, %s, %s)" %(row[CNT.ID],
+                         "conv_batx, anyBat1, anyBat2, ordre_pref) VALUES (%s, \"%s\", %s, %s, %s, %s, %s, %s, %s)" %(row[CNT.ID],
                          row[CNT.CENTRE_BATX], row[CNT.MITJA_EXP], row[CNT.NOTA_A_PREINS], id_prova,
-                         VALORS.get(row[CNT.CONV_BATX]), dates[0], dates[1])
+                         VALORS.get(row[CNT.CONV_BATX]), dates[0], dates[1], row[CNT.ORDRE_PREF])
                 execute_insert(insert)
 
 
 
+def inserts_assig_sel(reader):
+    CNT = enum(ID_ALU=0,PLA=1,NOM=2,C_PLA=3,ANY_PROVA=4,CONV_PROVA=5,FASE=6,C_MATERIA=7,
+               NOM_MATERIA=8,PRESENTAT=9,NOTA=10)
+    VALORS = dict()
 
+    data = run_query("SELECT id, valor FROM t_valors")
+    for row in data:
+        VALORS.update({row[1]: row[0]})
 
-def inserts_assig_sel(csvFile):
-    print
+    for row in reader:
+        data=[]
+        #Tratamiento de valores nulos
+        for i in range(len(row)):
+            if row[i] == '':
+                row[i] = 'null'
+
+        # Insertar el grado si no existe
+        if not exist_in_db("SELECT * FROM grau where id_grau = %s" % row[CNT.C_PLA]):
+            insert = "INSERT INTO grau (id_grau, nom, pla) VALUES  (%s, \"%s\", \"%s\")" \
+               % (row[CNT.C_PLA], row[CNT.NOM], row[CNT.PLA])
+            run_query(insert)
+
+        #Insertar la asignatura si no existe
+        if not exist_in_db("SELECT * FROM assig_sel WHERE codi = %s" % row[CNT.C_MATERIA]):
+            insert = "INSERT INTO assig_sel (codi, nom) VALUES (%s, \"%s\")" %(row[CNT.C_MATERIA], row[CNT.NOM_MATERIA])
+            run_query(insert)
+
+        if exist_in_db("SELECT id_prova FROM alumne WHERE id_alumne = %s" %row[CNT.ID_ALU]):
+            data=run_query("SELECT id_prova FROM alumne WHERE id_alumne = %s" %row[CNT.ID_ALU])
+            id_prova = data[0][0]
+
+            pres = 0
+            if row[CNT.PRESENTAT] == 's' or row[CNT.PRESENTAT] == 'S':
+                pres = 1
+
+            insert = "INSERT INTO assig_prova (id_prova, id_assig, nota, presentat, fase) VALUES (%s, %s, %s, %s, %s)" \
+                %(id_prova, row[CNT.C_MATERIA], row[CNT.NOTA], pres, VALORS.get(row[CNT.FASE]) )
+            run_query(insert)
 
 
 def inserts_dades_matricula(csvFile):
@@ -251,6 +285,7 @@ def create_Tables():
                 	conv_batx int not null,
                 	anyBat1 int,
                 	anyBat2 int,
+                	ordre_pref int,
 	                foreign key (id_prova) references p_acces(id),
 	                foreign key (conv_batx) references t_valors(id) )"""
         cursor.execute(c_query)
@@ -260,7 +295,6 @@ def create_Tables():
 	                id int auto_increment primary key,
 	                any1 int not null,
 	                any2 int not null,
-                	ordre_preferencia int not null,
 	                cred_1 int not null default 0,
 	                cred_2 int not null default 0,
 	                cred_3 int not null default 0,
@@ -327,7 +361,7 @@ def insert_t_valorsInfo(valors=""):
     run_query(i_query)
 
 def main():
-    files = ['assig_sel.csv','dades_acces.csv', 'dades_matricula.csv', 'linies_acta.csv']
+    files = ['dades_acces.csv','assig_sel.csv', 'dades_matricula.csv', 'linies_acta.csv']
 
     path = ""
 

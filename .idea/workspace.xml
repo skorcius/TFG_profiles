@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="34e9ad0a-3f8f-4227-b41d-0389238edfa3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/creacioBD.py" afterPath="$PROJECT_DIR$/creacioBD.py" />
     </list>
     <ignored path="TFG.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +27,11 @@
       <file leaf-file-name="creacioBD.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/creacioBD.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="671">
-              <caret line="229" column="59" selection-start-line="229" selection-start-column="59" selection-end-line="229" selection-end-column="59" />
+            <state relative-caret-position="1376">
+              <caret line="267" column="8" selection-start-line="267" selection-start-column="8" selection-end-line="267" selection-end-column="8" />
               <folding>
                 <element signature="e#25#39#0" expanded="true" />
-                <element signature="e#10170#14794#0" expanded="false" />
+                <element signature="e#10899#15523#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -326,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1468434078152</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Bug fix matricula">
+      <created>1468434422749</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1468434422749</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -367,7 +375,8 @@
     <MESSAGE value="Remove XML and init inserts" />
     <MESSAGE value="Inserts from assig_sel.csv" />
     <MESSAGE value="Inserts de dades matricula" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inserts de dades matricula" />
+    <MESSAGE value="Bug fix matricula" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fix matricula" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -382,7 +391,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10170#14794#0" expanded="false" />
+            <element signature="e#10899#15523#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -393,7 +402,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10170#14794#0" expanded="false" />
+            <element signature="e#10899#15523#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -404,7 +413,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10170#14794#0" expanded="false" />
+            <element signature="e#10899#15523#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -415,7 +424,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10170#14794#0" expanded="false" />
+            <element signature="e#10899#15523#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -430,7 +439,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10170#14794#0" expanded="false" />
+            <element signature="e#10899#15523#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -442,7 +451,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10170#14794#0" expanded="false" />
+            <element signature="e#10899#15523#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -453,7 +462,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10170#14794#0" expanded="false" />
+            <element signature="e#10899#15523#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -464,7 +473,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10170#14794#0" expanded="false" />
+            <element signature="e#10899#15523#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -475,7 +484,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10170#14794#0" expanded="false" />
+            <element signature="e#10899#15523#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -486,7 +495,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10170#14794#0" expanded="false" />
+            <element signature="e#10899#15523#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -549,11 +558,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/creacioBD.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="229" column="59" selection-start-line="229" selection-start-column="59" selection-end-line="229" selection-end-column="59" />
+        <state relative-caret-position="1376">
+          <caret line="267" column="8" selection-start-line="267" selection-start-column="8" selection-end-line="267" selection-end-column="8" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10170#14794#0" expanded="false" />
+            <element signature="e#10899#15523#0" expanded="false" />
           </folding>
         </state>
       </provider>

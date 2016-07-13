@@ -238,7 +238,7 @@ def inserts_dades_matricula(reader):
 
 
 
-def inserts_lines_acta(csvFile):
+def inserts_lines_acta(reader):
     CNT = enum(ID_ALU=0,PLA=1,NOM=2,C_PLA=3,ASSIG=4,CURS=5,TIPUS=6,CREDITS=7,NUM_MATRIC=8,ANY=9,
                CONVOCATORIA=10,PRESENTAT=11,MHONOR=12,NOTA=13,QUALIFICACIO=14)
 
@@ -247,6 +247,26 @@ def inserts_lines_acta(csvFile):
     data = run_query("SELECT id, valor FROM t_valors")
     for row in data:
         VALORS.update({row[1]: row[0]})
+
+    for row in reader:
+        # Tratamiento de valores nulos
+        for i in range(len(row)):
+            if row[i] == '':
+                row[i] = 'null'
+
+        # Insertar el grado si no existe
+        if not exist_in_db("SELECT * FROM grau where id_grau = %s" % row[CNT.C_PLA]):
+            insert = "INSERT INTO grau (id_grau, nom, pla) VALUES  (%s, \"%s\", \"%s\")" \
+                        % (row[CNT.C_PLA], row[CNT.NOM], row[CNT.PLA])
+            run_query(insert)
+
+        #Insertar assignatura si no existe
+        if not exist_in_db("SELECT * FROM assig WHERE id_assig = %s" %row[CNT.ASSIG]):
+            insert = "INSERT INTO assig (id_assig) VALUES (%s)" %row[CNT.ASSIG]
+            run_query(insert)
+
+
+
 
 
 

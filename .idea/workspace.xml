@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="34e9ad0a-3f8f-4227-b41d-0389238edfa3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/creacioBD.py" afterPath="$PROJECT_DIR$/creacioBD.py" />
     </list>
     <ignored path="TFG.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,10 +27,10 @@
         <entry file="file://$PROJECT_DIR$/creacioBD.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1376">
-              <caret line="267" column="8" selection-start-line="267" selection-start-column="8" selection-end-line="267" selection-end-column="8" />
+              <caret line="267" column="0" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
               <folding>
                 <element signature="e#25#39#0" expanded="true" />
-                <element signature="e#10899#15523#0" expanded="false" />
+                <element signature="e#10891#15515#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -334,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1468434422749</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Bug fix matricula">
+      <created>1468442715106</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1468442715106</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -391,7 +397,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10899#15523#0" expanded="false" />
+            <element signature="e#10891#15515#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -402,7 +408,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10899#15523#0" expanded="false" />
+            <element signature="e#10891#15515#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -413,7 +419,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10899#15523#0" expanded="false" />
+            <element signature="e#10891#15515#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -424,7 +430,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10899#15523#0" expanded="false" />
+            <element signature="e#10891#15515#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -439,7 +445,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10899#15523#0" expanded="false" />
+            <element signature="e#10891#15515#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -451,7 +457,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10899#15523#0" expanded="false" />
+            <element signature="e#10891#15515#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -462,7 +468,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10899#15523#0" expanded="false" />
+            <element signature="e#10891#15515#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -473,7 +479,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10899#15523#0" expanded="false" />
+            <element signature="e#10891#15515#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -484,7 +490,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10899#15523#0" expanded="false" />
+            <element signature="e#10891#15515#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -495,7 +501,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10899#15523#0" expanded="false" />
+            <element signature="e#10891#15515#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -559,10 +565,10 @@
     <entry file="file://$PROJECT_DIR$/creacioBD.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1376">
-          <caret line="267" column="8" selection-start-line="267" selection-start-column="8" selection-end-line="267" selection-end-column="8" />
+          <caret line="267" column="0" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#10899#15523#0" expanded="false" />
+            <element signature="e#10891#15515#0" expanded="false" />
           </folding>
         </state>
       </provider>

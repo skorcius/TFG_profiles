@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34e9ad0a-3f8f-4227-b41d-0389238edfa3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/alumne.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/con_SQL.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/TFG.iml" afterPath="$PROJECT_DIR$/.idea/TFG.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -26,24 +28,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="creacioBD.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="creacioBD.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/creacioBD.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="314" column="20" selection-start-line="314" selection-start-column="20" selection-end-line="314" selection-end-column="20" />
+            <state relative-caret-position="-3596">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
-                <element signature="e#25#39#0" expanded="true" />
-                <element signature="e#12083#16856#0" expanded="false" />
+                <element signature="e#25#35#0" expanded="true" />
+                <element signature="e#10329#15102#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="linies_acta.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/linies_acta.csv">
+      <file leaf-file-name="con_SQL.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/con_SQL.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="110" column="76" selection-start-line="110" selection-start-column="76" selection-end-line="111" selection-end-column="83" />
+            <state relative-caret-position="60">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding>
+                <element signature="e#25#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="alumne.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/alumne.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -65,14 +79,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/dades_acces.xml" />
+        <option value="$PROJECT_DIR$/con_SQL.py" />
         <option value="$PROJECT_DIR$/creacioBD.py" />
+        <option value="$PROJECT_DIR$/alumne.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1920" />
-    <option name="width" value="1080" />
-    <option name="height" value="1920" />
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="828" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -99,32 +115,32 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TFG" />
+              <option name="myItemId" value="TFG_profiles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TFG" />
+              <option name="myItemId" value="TFG_profiles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TFG" />
+              <option name="myItemId" value="TFG_profiles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="99" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -357,17 +373,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="0" width="1080" height="1920" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="828" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17870371" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17847222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2526433" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23149695" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2859025" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2526433" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23056653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21758486" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -409,8 +425,27 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#12083#16856#0" expanded="false" />
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/linies_acta.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1650">
+          <caret line="110" column="76" selection-start-line="110" selection-start-column="76" selection-end-line="111" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creacioBD.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -420,8 +455,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#12083#16856#0" expanded="false" />
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -431,8 +466,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#12083#16856#0" expanded="false" />
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -442,8 +477,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#12083#16856#0" expanded="false" />
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -453,8 +488,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#12083#16856#0" expanded="false" />
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -468,8 +503,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#12083#16856#0" expanded="false" />
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -480,8 +515,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#12083#16856#0" expanded="false" />
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -491,8 +526,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#12083#16856#0" expanded="false" />
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -502,8 +537,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#12083#16856#0" expanded="false" />
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -513,8 +548,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#12083#16856#0" expanded="false" />
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -524,8 +559,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#12083#16856#0" expanded="false" />
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -564,17 +599,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/connections.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/connections.py" />
     <entry file="file://$PROJECT_DIR$/linies_acta.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
+        <state relative-caret-position="1650">
           <caret line="110" column="76" selection-start-line="110" selection-start-column="76" selection-end-line="111" selection-end-column="83" />
           <folding />
         </state>
@@ -582,12 +610,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/creacioBD.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="314" column="20" selection-start-line="314" selection-start-column="20" selection-end-line="314" selection-end-column="20" />
+        <state relative-caret-position="-3596">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#25#35#0" expanded="true" />
+            <element signature="e#10329#15102#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/con_SQL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alumne.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>

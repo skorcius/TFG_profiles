@@ -228,7 +228,7 @@ def inserts_dades_matricula(reader):
             dates=get_dates(row[CNT.ANY])
 
             #Si el usuario existe introducimos la matricula
-            if exist_in_db("SELECT * FROM alumne WHERE id_alumne = %s" %row[CNT.ID_ALU])
+            if exist_in_db("SELECT * FROM alumne WHERE id_alumne = %s" %row[CNT.ID_ALU]):
                 insert="INSERT INTO matricula (any1, any2, cred_1, cred_2, cred_3, cred_4, cred_sup, cred_no_sup, cred_rec, " \
                    "cred_pres, cred_no_pres, alumne, id_grau) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(dates[0],
                       dates[1], row[CNT.CRED_1_MAT], row[CNT.CRED_2_MAT], row[CNT.CRED_3_MAT], row[CNT.CRED_4_MAT],
@@ -265,10 +265,25 @@ def inserts_lines_acta(reader):
             insert = "INSERT INTO assig (id_assig) VALUES (%s)" %row[CNT.ASSIG]
             run_query(insert)
 
+        insert="INSERT INTO assig_grau (id_grau, id_assig, curs, tipus, credits) VALUES (%s,%s,%s,%s,%s)" \
+               %(row[CNT.C_PLA], row[CNT.ASSIG], row[CNT.CURS], VALORS.get(row[CNT.TIPUS]), row[CNT.CREDITS] )
+        run_query(insert)
 
+        if exist_in_db("SELECT * FROM alumne WHERE id_alume = %s" %row[CNT.ID_ALU]):
 
+            dates=get_dates(row[CNT.ANY])
+            presentat=0
+            if row[CNT.PRESENTAT] == 'S' or row[CNT.PRESENTAT] == 's':
+                presentat = 1
 
+            m_honor = 0
+            if row[CNT.MHONOR] == 'S' or row[CNT.MHONOR] == 's':
+                m_honor=1
 
+            insert="INSERT INTO alumne_assig (id_alumne, id_assig, any1, any2, conv, nota, presentat, m_honor) VALUES " \
+                   "(%s, %s, %s, %s, %s, %s %s, %s)" %(row[CNT.ID_ALU], row[CNT.ASSIG], dates[0], dates[1],
+                                                VALORS.get(row[CNT.CONVOCATORIA]), row[CNT.NOTA], presentat, m_honor)
+            run_query(insert)
 
 
 def create_DB(nameDB="profiles"):

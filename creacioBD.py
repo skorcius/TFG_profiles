@@ -229,10 +229,10 @@ def inserts_dades_matricula(reader):
 
             #Si el usuario existe introducimos la matricula
             if exist_in_db("SELECT * FROM alumne WHERE id_alumne = %s" %row[CNT.ID_ALU]):
-                insert="INSERT INTO matricula (any1, any2, cred_1, cred_2, cred_3, cred_4, cred_sup, cred_no_sup, cred_rec, " \
-                   "cred_pres, cred_no_pres, alumne, id_grau) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(dates[0],
-                      dates[1], row[CNT.CRED_1_MAT], row[CNT.CRED_2_MAT], row[CNT.CRED_3_MAT], row[CNT.CRED_4_MAT],
-                      row[CNT.CRED_SUPERATS], row[CNT.CRED_NO_SUPERATS], row[CNT.CRED_RECONEGUTS],
+                insert="INSERT INTO matricula (any1, any2, cred_1, cred_2, cred_3, cred_sup, cred_no_sup, cred_rec, " \
+                   "cred_pres, cred_no_pres, alumne, id_grau) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" \
+                      %(dates[0], dates[1], row[CNT.CRED_1_MAT], row[CNT.CRED_2_MAT], row[CNT.CRED_3_MAT],
+                      row[CNT.CRED_SUPERATS], row[CNT.CRED_NO_SUPERAT], row[CNT.CRED_RECONEGUTS],
                       row[CNT.CRED_PRESENTAT], row[CNT.CRED_NOPRESENTAT], row[CNT.ID_ALU], row[CNT.C_PLA])
                 run_query(insert)
 
@@ -265,23 +265,26 @@ def inserts_lines_acta(reader):
             insert = "INSERT INTO assig (id_assig) VALUES (%s)" %row[CNT.ASSIG]
             run_query(insert)
 
-        insert="INSERT INTO assig_grau (id_grau, id_assig, curs, tipus, credits) VALUES (%s,%s,%s,%s,%s)" \
+        if not exist_in_db("SELECT * FROM assig_grau WHERE id_grau = %s and id_assig = %s" %(row[CNT.C_PLA], row[CNT.ASSIG])):
+            insert="INSERT INTO assig_grau (id_grau, id_assig, curs, tipus, credits) VALUES (%s,%s,%s,%s,%s)" \
                %(row[CNT.C_PLA], row[CNT.ASSIG], row[CNT.CURS], VALORS.get(row[CNT.TIPUS]), row[CNT.CREDITS] )
-        run_query(insert)
+            run_query(insert)
 
-        if exist_in_db("SELECT * FROM alumne WHERE id_alume = %s" %row[CNT.ID_ALU]):
+        if exist_in_db("SELECT * FROM alumne WHERE id_alumne = %s" %row[CNT.ID_ALU]):
 
             dates=get_dates(row[CNT.ANY])
             presentat=0
             if row[CNT.PRESENTAT] == 'S' or row[CNT.PRESENTAT] == 's':
                 presentat = 1
+            else:
+                row[CNT.NOTA] = '0'
 
             m_honor = 0
             if row[CNT.MHONOR] == 'S' or row[CNT.MHONOR] == 's':
                 m_honor=1
 
-            insert="INSERT INTO alumne_assig (id_alumne, id_assig, any1, any2, conv, nota, presentat, m_honor) VALUES " \
-                   "(%s, %s, %s, %s, %s, %s %s, %s)" %(row[CNT.ID_ALU], row[CNT.ASSIG], dates[0], dates[1],
+            insert="INSERT INTO alumne_assig (id_alumne, id_assig, num_matricula, any1, any2, conv, nota, presentat, m_honor) VALUES " \
+                   "(%s, %s, %s, %s,%s, %s, %s, %s, %s)" %(row[CNT.ID_ALU], row[CNT.ASSIG], row[CNT.NUM_MATRIC],dates[0], dates[1],
                                                 VALORS.get(row[CNT.CONVOCATORIA]), row[CNT.NOTA], presentat, m_honor)
             run_query(insert)
 
@@ -298,7 +301,7 @@ def create_DB(nameDB="profiles"):
 
         create_Tables()
 
-        insert_t_valorsInfo("FEB JUN SET GEN ESP FBA OBL OPT TFG")
+        insert_t_valorsInfo("FEB JUN JUL SET GEN ESP FBA OBL OPT TFG")
 
         dbExist=False                     #La BD no existe, debemos cargar la info en la BD
     except _mysql_exceptions.DatabaseError:
@@ -364,6 +367,12 @@ def create_Tables():
 	                foreign key (conv_batx) references t_valors(id) )"""
         cursor.execute(c_query)
 
+        c_query = """CREATE TABLE grau (
+        	                id_grau int primary key,
+        	                nom varchar(70) not null,
+        	                pla varchar(30) not null )"""
+        cursor.execute(c_query)
+
         #Taules per l'informació del grau
         c_query =   """CREATE TABLE matricula (
 	                id int auto_increment primary key,
@@ -383,11 +392,6 @@ def create_Tables():
 	                foreign key (id_grau) references grau(id_grau) )"""
         cursor.execute(c_query)
 
-        c_query =   """CREATE TABLE grau (
-	                id_grau int primary key,
-	                nom varchar(70) not null,
-	                pla varchar(30) not null )"""
-        cursor.execute(c_query)
 
         c_query =   """CREATE TABLE assig (
                     id_assig int primary key )"""
@@ -406,18 +410,20 @@ def create_Tables():
         cursor.execute(c_query)
 
         c_query =   """CREATE TABLE alumne_assig (
+                    id int auto_increment primary key,
 	                id_alumne int,
 	                id_assig int,
 	                any1 int not null,
                 	any2 int not null,
                 	conv int,
+                	num_matricula int,
 	                nota float not null default 0,
 	                m_honor boolean default false,
 	                presentat boolean not null default false,
-	                primary key (id_alumne, id_assig) ,
 	                foreign key (id_alumne) references alumne(id_alumne),
 	                foreign key (id_assig) references assig(id_assig),
-	                foreign key (conv) references t_valors(id) )"""
+	                foreign key (conv) references t_valors(id),
+	                unique c_intent (id_alumne, id_assig, conv, num_matricula, any1, any2))"""
         cursor.execute(c_query)
         cursor.close()
     finally:

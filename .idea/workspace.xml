@@ -29,12 +29,22 @@
       <file leaf-file-name="creacioBD.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/creacioBD.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="230" column="89" selection-start-line="230" selection-start-column="89" selection-end-line="230" selection-end-column="89" />
+            <state relative-caret-position="825">
+              <caret line="314" column="20" selection-start-line="314" selection-start-column="20" selection-end-line="314" selection-end-column="20" />
               <folding>
                 <element signature="e#25#39#0" expanded="true" />
-                <element signature="e#11882#16506#0" expanded="false" />
+                <element signature="e#12083#16856#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="linies_acta.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/linies_acta.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="110" column="76" selection-start-line="110" selection-start-column="76" selection-end-line="111" selection-end-column="83" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,9 +70,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="828" />
+    <option name="x" value="1920" />
+    <option name="width" value="1080" />
+    <option name="height" value="1920" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -89,32 +99,32 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TFG_profiles" />
+              <option name="myItemId" value="TFG" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TFG_profiles" />
+              <option name="myItemId" value="TFG" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TFG_profiles" />
+              <option name="myItemId" value="TFG" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="99" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -347,15 +357,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="828" extended-state="6" />
+    <frame x="1920" y="0" width="1080" height="1920" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17916666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17870371" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2526433" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23188406" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23149695" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -389,7 +399,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="30" />
+      <option name="time" value="34" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -400,7 +410,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#11882#16506#0" expanded="false" />
+            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -411,7 +421,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#11882#16506#0" expanded="false" />
+            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -422,7 +432,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#11882#16506#0" expanded="false" />
+            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -433,7 +443,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#11882#16506#0" expanded="false" />
+            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -444,7 +454,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#11882#16506#0" expanded="false" />
+            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -459,7 +469,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#11882#16506#0" expanded="false" />
+            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -471,7 +481,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#11882#16506#0" expanded="false" />
+            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -482,7 +492,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#11882#16506#0" expanded="false" />
+            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -493,7 +503,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#11882#16506#0" expanded="false" />
+            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -504,7 +514,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#11882#16506#0" expanded="false" />
+            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -515,7 +525,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#11882#16506#0" expanded="false" />
+            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -533,7 +543,6 @@
       </provider>
     </entry>
     <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/cursors.py" />
-    <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/connections.py" />
     <entry file="file://$PROJECT_DIR$/assig_sel.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -555,13 +564,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/connections.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/linies_acta.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="110" column="76" selection-start-line="110" selection-start-column="76" selection-end-line="111" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/creacioBD.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="230" column="89" selection-start-line="230" selection-start-column="89" selection-end-line="230" selection-end-column="89" />
+        <state relative-caret-position="825">
+          <caret line="314" column="20" selection-start-line="314" selection-start-column="20" selection-end-line="314" selection-end-column="20" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
-            <element signature="e#11882#16506#0" expanded="false" />
+            <element signature="e#12083#16856#0" expanded="false" />
           </folding>
         </state>
       </provider>

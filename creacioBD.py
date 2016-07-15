@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import csv
+import _mysql_exceptions
 from con_SQL import *
 
 

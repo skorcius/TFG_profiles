@@ -18,6 +18,8 @@ class Alumne:
         self.p_pacces = {'mitja':'', 'any1':'', 'any2':'', 'conv':'', 'subacc':'', 'nom_subacc':'', 'uni':''}
         self.set_perfil_selectivitat()
 
+        self.p_assig = {}
+
 
 
     def set_perfil_alumne(self):
@@ -64,6 +66,9 @@ class Alumne:
                 self.n_pacces.append(row[0])
                 self.a_pacces.append(row[1])
                 self.f_pacces.append(row[2])
+
+    def set_perfil_grau(self):
+        print
 
 
 

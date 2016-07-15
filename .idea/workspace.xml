@@ -4,7 +4,6 @@
     <list default="true" id="34e9ad0a-3f8f-4227-b41d-0389238edfa3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alumne.py" afterPath="$PROJECT_DIR$/alumne.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/creacioBD.py" afterPath="$PROJECT_DIR$/creacioBD.py" />
     </list>
     <ignored path="TFG.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,8 +52,8 @@
       <file leaf-file-name="alumne.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/alumne.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+            <state relative-caret-position="300">
+              <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -392,7 +391,14 @@
       <option name="project" value="LOCAL" />
       <updated>1468512708286</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Millores en la classe alumne">
+      <created>1468578478646</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1468578478646</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -435,7 +441,8 @@
     <MESSAGE value="Inserts de dades matricula" />
     <MESSAGE value="Bug fix matricula" />
     <MESSAGE value="Reordenacio de funcions y classe alumne" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reordenacio de funcions y classe alumne" />
+    <MESSAGE value="Millores en la classe alumne" />
+    <option name="LAST_COMMIT_MESSAGE" value="Millores en la classe alumne" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -689,8 +696,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/alumne.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        <state relative-caret-position="300">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
           <folding />
         </state>
       </provider>

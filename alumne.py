@@ -1,8 +1,8 @@
+# -*- coding: utf-8 -*-
+
 from con_SQL import *
 
 class Alumne:
-
-
 
     def __init__(self, id):
         self.id_alu = id
@@ -11,6 +11,7 @@ class Alumne:
                          'anyBatx2':'', 'ordre_pref':''}
         self.set_perfil_alumne()
 
+        #Información del examen de selectividad
         self.n_pacces = []
         self.a_pacces = []
         self.f_pacces = []
@@ -18,7 +19,10 @@ class Alumne:
         self.p_pacces = {'mitja':'', 'any1':'', 'any2':'', 'conv':'', 'subacc':'', 'nom_subacc':'', 'uni':''}
         self.set_perfil_selectivitat()
 
-        self.p_assig = {}
+        #Información del grado
+        self.p_assig_1 = {}
+
+        self.abandono = False;
 
 
 
@@ -89,9 +93,13 @@ class Alumne:
 
 
     def toString(self):
-        print "Alumne ID: %s" %self.id_alu
+        str = "Alumne ID: %s \n" %self.id_alu
+        str += "\tInformació selectivitat: "
+
+        return str
 
 
 #Prova de la classe
 
 al = Alumne(23424)
+print al.toString()

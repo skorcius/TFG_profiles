@@ -381,7 +381,6 @@ def main():
     path = ""
 
     dbExist = create_DB()
-    dbExist = False
     if not dbExist:
         prepare_info_for_db(path, files)
 

@@ -64,7 +64,7 @@ def inserts_dades_acces(reader=[]):
 
     for row in reader:
 
-        #Tratamiento de valores nulos
+        #Null values for DB
         for i in range(len(row)):
             if row[i] == '':
                 row[i] = 'null'
@@ -75,10 +75,10 @@ def inserts_dades_acces(reader=[]):
                      %(row[CNT.C_PLA], row[CNT.NOM], row[CNT.PLA])
             run_query(insert)
 
-        #Comprobar si l'usuari existeix
+        #Check if user exist
         if not exist_in_db("SELECT id_alumne, id_prova FROM alumne WHERE id_alumne = %s" %row[CNT.ID]):
 
-            #Insertar prova d'acces y usuari
+            #Insert test and alumn
             if row[CNT.TIPUS_ACCES] == '1':
                 dates = get_dates(row[CNT.ANY_ACCES])
 
@@ -106,22 +106,23 @@ def inserts_assig_sel(reader):
         VALORS.update({row[1]: row[0]})
 
     for row in reader:
-        #Tratamiento de valores nulos
+        #Null data
         for i in range(len(row)):
             if row[i] == '':
                 row[i] = 'null'
 
-        # Insertar el grado si no existe
+        #Insert dregree if not exists
         if not exist_in_db("SELECT * FROM grau where id_grau = %s" % row[CNT.C_PLA]):
             insert = "INSERT INTO grau (id_grau, nom, pla) VALUES  (%s, \"%s\", \"%s\")" \
                % (row[CNT.C_PLA], row[CNT.NOM], row[CNT.PLA])
             run_query(insert)
 
-        #Insertar la asignatura si no existe
+        #Insert subject if not exists
         if not exist_in_db("SELECT * FROM assig_sel WHERE codi = %s" % row[CNT.C_MATERIA]):
             insert = "INSERT INTO assig_sel (codi, nom) VALUES (%s, \"%s\")" %(row[CNT.C_MATERIA], row[CNT.NOM_MATERIA])
             run_query(insert)
 
+        #Insert all data of subjects
         if exist_in_db("SELECT id_prova FROM alumne WHERE id_alumne = %s" %row[CNT.ID_ALU]):
             data=run_query("SELECT id_prova FROM alumne WHERE id_alumne = %s" %row[CNT.ID_ALU])
             id_prova = data[0][0]
@@ -146,27 +147,27 @@ def inserts_dades_matricula(reader):
         VALORS.update({row[1]: row[0]})
 
     for row in reader:
-        # Tratamiento de valores nulos
+        # Null values
         for i in range(len(row)):
             if row[i] == '':
                 row[i] = 'null'
 
-            # Insertar el grado si no existe
-            if not exist_in_db("SELECT * FROM grau where id_grau = %s" % row[CNT.C_PLA]):
-                insert = "INSERT INTO grau (id_grau, nom, pla) VALUES  (%s, \"%s\", \"%s\")" \
-                         % (row[CNT.C_PLA], row[CNT.NOM], row[CNT.PLA])
-                run_query(insert)
+        # Insert degree
+        if not exist_in_db("SELECT * FROM grau where id_grau = %s" % row[CNT.C_PLA]):
+            insert = "INSERT INTO grau (id_grau, nom, pla) VALUES  (%s, \"%s\", \"%s\")" \
+                      % (row[CNT.C_PLA], row[CNT.NOM], row[CNT.PLA])
+            run_query(insert)
 
-            dates=get_dates(row[CNT.ANY])
+        dates=get_dates(row[CNT.ANY])
 
-            #Si el usuario existe introducimos la matricula
-            if exist_in_db("SELECT * FROM alumne WHERE id_alumne = %s" %row[CNT.ID_ALU]):
-                insert="INSERT INTO matricula (any1, any2, cred_1, cred_2, cred_3, cred_sup, cred_no_sup, cred_rec, " \
+        #If user exist, insert matricula
+        if exist_in_db("SELECT * FROM alumne WHERE id_alumne = %s" %row[CNT.ID_ALU]):
+            insert="INSERT INTO matricula (any1, any2, cred_1, cred_2, cred_3, cred_sup, cred_no_sup, cred_rec, " \
                    "cred_pres, cred_no_pres, alumne, id_grau) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" \
                       %(dates[0], dates[1], row[CNT.CRED_1_MAT], row[CNT.CRED_2_MAT], row[CNT.CRED_3_MAT],
-                      row[CNT.CRED_SUPERATS], row[CNT.CRED_NO_SUPERAT], row[CNT.CRED_RECONEGUTS],
-                      row[CNT.CRED_PRESENTAT], row[CNT.CRED_NOPRESENTAT], row[CNT.ID_ALU], row[CNT.C_PLA])
-                run_query(insert)
+            row[CNT.CRED_SUPERATS], row[CNT.CRED_NO_SUPERAT], row[CNT.CRED_RECONEGUTS],
+            row[CNT.CRED_PRESENTAT], row[CNT.CRED_NOPRESENTAT], row[CNT.ID_ALU], row[CNT.C_PLA])
+            run_query(insert)
 
 
 
@@ -181,18 +182,18 @@ def inserts_lines_acta(reader):
         VALORS.update({row[1]: row[0]})
 
     for row in reader:
-        # Tratamiento de valores nulos
+        # Null values
         for i in range(len(row)):
             if row[i] == '':
                 row[i] = 'null'
 
-        # Insertar el grado si no existe
+        #Degree
         if not exist_in_db("SELECT * FROM grau where id_grau = %s" % row[CNT.C_PLA]):
             insert = "INSERT INTO grau (id_grau, nom, pla) VALUES  (%s, \"%s\", \"%s\")" \
                         % (row[CNT.C_PLA], row[CNT.NOM], row[CNT.PLA])
             run_query(insert)
 
-        #Insertar assignatura si no existe
+        #Insert subject
         if not exist_in_db("SELECT * FROM assig WHERE id_assig = %s" %row[CNT.ASSIG]):
             insert = "INSERT INTO assig (id_assig) VALUES (%s)" %row[CNT.ASSIG]
             run_query(insert)
@@ -235,9 +236,9 @@ def create_DB(nameDB="profiles"):
 
         insert_t_valorsInfo("FEB JUN JUL SET GEN ESP FBA OBL OPT TFG")
 
-        dbExist=False                     #La BD no existe, debemos cargar la info en la BD
+        dbExist=False                   #DB doesn't exist
     except _mysql_exceptions.DatabaseError:
-        dbExist=True                    #La BD ya existe, no cargar info en la BD
+        dbExist=True                    #DB exist
     finally:
         conn.close()
 
@@ -378,7 +379,7 @@ def insert_t_valorsInfo(valors=""):
 def main():
     files = ['dades_acces.csv','assig_sel.csv', 'dades_matricula.csv', 'linies_acta.csv']
 
-    path = ""
+    path = "/Users/joan/Documents/Proyecto/"
 
     dbExist = create_DB()
     if not dbExist:

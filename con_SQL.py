@@ -13,18 +13,18 @@ infoDB = {
 
 def run_query(query=''):
         try:
-            conn = MySQLdb.connect(**infoDB)  # Conectar a la base de datos
-            cursor = conn.cursor()  # Crear un cursor
-            cursor.execute(query)  # Ejecutar una consulta
+            conn = MySQLdb.connect(**infoDB)    #Connect to DB
+            cursor = conn.cursor()              #Create a cursor
+            cursor.execute(query)               #Make the query
 
             if query.upper().startswith('SELECT'):
-                data = cursor.fetchall()  # Traer los resultados de un select
+                data = cursor.fetchall()        #Bring results from select
             else:
-                conn.commit()  # Hacer efectiva la escritura de datos
+                conn.commit()                   #Commit the query if it's not a select
                 data = None
 
-            cursor.close()  # Cerrar el cursor
-            conn.close()  # Cerrar la conexión
+            cursor.close()                      #Close the cursor
+            conn.close()                        #Close the connection
 
             return data
         except _mysql_exceptions.DataError:
@@ -33,17 +33,17 @@ def run_query(query=''):
 
 
 def exist_in_db(query=''):
-    conn = MySQLdb.connect(**infoDB)  # Conectar a la base de datos
-    cursor = conn.cursor()  # Crear un cursor
-    cursor.execute(query)  # Ejecutar una consulta
+    conn = MySQLdb.connect(**infoDB)
+    cursor = conn.cursor()
+    cursor.execute(query)
 
     if query.upper().startswith('SELECT'):
-        data = cursor.fetchall()  # Traer los resultados de un select
+        data = cursor.fetchall()
     else:
         data = None
 
-    cursor.close()  # Cerrar el cursor
-    conn.close()  # Cerrar la conexión
+    cursor.close()
+    conn.close()
 
     if len(data) == 0:
         return False
@@ -52,15 +52,15 @@ def exist_in_db(query=''):
 
 
 def execute_insert(insert=''):
-    conn = MySQLdb.connect(**infoDB)  # Conectar a la base de datos
-    cursor = conn.cursor()  # Crear un cursor
-    cursor.execute(insert)  # Ejecutar una consulta
+    conn = MySQLdb.connect(**infoDB)
+    cursor = conn.cursor()
+    cursor.execute(insert)
 
-    conn.commit()  # Hacer efectiva la escritura de datos
+    conn.commit()
 
-    id = cursor.lastrowid
+    id = cursor.lastrowid   #Get ID from the last insert
 
-    cursor.close()  # Cerrar el cursor
-    conn.close()  # Cerrar la conexión
+    cursor.close()
+    conn.close()
 
     return id

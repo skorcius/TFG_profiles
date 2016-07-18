@@ -21,6 +21,8 @@ class Alumne:
 
         #Information about the degree
         self.p_subject_1 = {}
+        self.first_year = 0
+        self.set_degree_profile()
 
         self.renounce = False
 
@@ -73,29 +75,51 @@ class Alumne:
 
 
     def set_degree_profile(self):
-        print
+        data = run_query("select id_assig, any1, any2, t_valors.valor, num_matricula, presentat, nota  " \
+                         "from alumne_assig join t_valors on t_valors.id = conv " \
+                         "where id_alumne = %s order by any1" %self.id_alu)
+
+        self.first_year=0
+        notes = []
+        bef_sub = 0
 
 
+        for row in data:
+            if self.first_year == 0:
+                self.first_year = row[1]
 
+            if row[1] == self.first_year: #First year subject {id_assig -> [nota1(FEB o JUN), nota2(JUL o SET)]}
 
+               if bef_sub == 0:
+                    bef_sub = row[0]
+                    notes.append(row[6])
 
-
-
-
-
-
-
-
-
-
-
-
-
+               elif bef_sub == row[0]:
+                    notes.append(row[6])
+                    self.p_subject_1[row[0]] = notes
+                    bef_sub = 0
+                    notes = []
 
 
     def toString(self):
-        str = "Alumne ID: %s \n" %self.id_alu
-        str += "\tInformació selectivitat: "
+        str = "Alumne ID: %s \n\n" %self.id_alu
+        str += "\tInformació selectivitat: \n"
+        str += "\t\t "
+        for k, v in self.p_pacces.items():
+            str += "{0}:{1}, ".format(k,v)
+        str += "\n"
+        str += "\t\t Assignatures Selectivitat: \n"
+        for i in range(len(self.n_pacces)):
+            str += "\t\t\t Assignatura: {0}, Nota: {1}\n".format(self.a_pacces[i],self.n_pacces[i])
+        str += "\n\n"
+
+        str += "\tInformació grau: \n"
+        str += "\t\t Assignatures primer curs ({0}-{1}): \n".format(self.first_year, self.first_year+1)
+        for k,v in self.p_subject_1.items():
+            str += "\t\t\tAssignatura: {0}".format(k)
+            for value in v:
+                str += ", Nota: {0}".format(value)
+            str += "\n"
 
         return str
 

@@ -25,6 +25,7 @@ class Alumne:
         self.set_degree_profile()
 
         self.renounce = False
+        self.set_renounce()
 
 
 
@@ -101,6 +102,16 @@ class Alumne:
                     notes = []
 
 
+    def set_renounce(self):
+        data = run_query("SELECT * FROM alumne_assig WHERE id_alumne = %s and any1 = %s" \
+                         %(self.id_alu[0], self.first_year+1))
+
+        if len(data) > 1:
+            self.renounce = False
+        else:
+            self.renounce = True
+
+
     def toString(self):
         str = "Alumne ID: %s \n\n" %self.id_alu
         str += "\tInformació selectivitat: \n"
@@ -121,10 +132,21 @@ class Alumne:
                 str += ", Nota: {0}".format(value)
             str += "\n"
 
+        if self.renounce:
+            str += "\n \t\t El alumno ha abandonado el grado"
+        else:
+            str += "\n \t\t El alumno sigue con el grado"
+
+        str += "\n\n"
         return str
 
 
 #Prova de la classe
 
-al = Alumne(23424)
-print al.toString()
+alumns=[]
+alumnes = run_query("SELECT id_alumne FROM alumne")
+for al in alumnes:
+    alumns.append(Alumne(al))
+
+for al in alumns:
+    print al.toString()

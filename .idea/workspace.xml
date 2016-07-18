@@ -27,7 +27,7 @@
       <file leaf-file-name="creacioBD.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/creacioBD.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3570">
+            <state relative-caret-position="437">
               <caret line="240" column="49" selection-start-line="240" selection-start-column="49" selection-end-line="240" selection-end-column="49" />
               <folding>
                 <element signature="e#25#35#0" expanded="true" />
@@ -40,8 +40,8 @@
       <file leaf-file-name="con_SQL.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/con_SQL.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
               <folding>
                 <element signature="e#25#39#0" expanded="true" />
               </folding>
@@ -52,8 +52,8 @@
       <file leaf-file-name="alumne.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/alumne.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+            <state relative-caret-position="407">
+              <caret line="135" column="60" selection-start-line="135" selection-start-column="60" selection-end-line="135" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -412,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1468612574968</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Alumne .toString actualitzat">
+      <created>1468870386692</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1468870386692</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -458,7 +465,8 @@
     <MESSAGE value="Millores en la classe alumne" />
     <MESSAGE value="bug fixes" />
     <MESSAGE value="Eliminació de csvs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Eliminació de csvs" />
+    <MESSAGE value="Alumne .toString actualitzat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alumne .toString actualitzat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -469,7 +477,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="41" />
+      <option name="time" value="43" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -766,9 +774,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/linies_acta.csv" />
     <entry file="file://$PROJECT_DIR$/dades_matricula.csv" />
+    <entry file="file://$PROJECT_DIR$/con_SQL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+          <folding>
+            <element signature="e#25#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/creacioBD.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3570">
+        <state relative-caret-position="437">
           <caret line="240" column="49" selection-start-line="240" selection-start-column="49" selection-end-line="240" selection-end-column="49" />
           <folding>
             <element signature="e#25#35#0" expanded="true" />
@@ -777,20 +795,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/con_SQL.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#25#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/alumne.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+        <state relative-caret-position="407">
+          <caret line="135" column="60" selection-start-line="135" selection-start-column="60" selection-end-line="135" selection-end-column="60" />
           <folding />
         </state>
       </provider>

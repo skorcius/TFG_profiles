@@ -379,7 +379,7 @@ def insert_t_valorsInfo(valors=""):
 def main():
     files = ['dades_acces.csv','assig_sel.csv', 'dades_matricula.csv', 'linies_acta.csv']
 
-    path = "/Users/joan/Documents/Proyecto/"
+    path = "/home/joan/Documents/csv/"
 
     dbExist = create_DB()
     if not dbExist:

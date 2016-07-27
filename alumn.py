@@ -2,7 +2,7 @@
 
 from con_SQL import *
 
-class Alumne:
+class Alumn:
 
     def __init__(self, id):
         self.id_alu = id
@@ -109,7 +109,11 @@ class Alumne:
         if len(data) > 1:
             self.renounce = False
         else:
-            self.renounce = True
+
+            data = run_query("SELECT * FROM alumne_assig WHERE id_alumne = %s and any1 = %s" \
+                             % (self.id_alu[0], self.first_year + 2))
+            if len(data) < 1:
+                self.renounce = True
 
 
     def toString(self):
@@ -141,12 +145,3 @@ class Alumne:
         return str
 
 
-#Prova de la classe
-
-alumns=[]
-alumnes = run_query("SELECT id_alumne FROM alumne")
-for al in alumnes:
-    alumns.append(Alumne(al))
-
-for al in alumns:
-    print al.toString()

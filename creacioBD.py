@@ -377,13 +377,27 @@ def insert_t_valorsInfo(valors=""):
     run_query(i_query)
 
 def main():
-    files = ['dades_acces.csv','assig_sel.csv', 'dades_matricula.csv', 'linies_acta.csv']
+    #files = ['dades_acces.csv','assig_sel.csv', 'dades_matricula.csv', 'linies_acta.csv']
+    files = []
+    #path = "/home/joan/Documents/csv/"
+    path = None
 
-    path = "/home/joan/Documents/csv/"
+    nFiles = raw_input("Do you want to import new data (s/n)? ")
+    if nFiles == "s":
+
+        while True:
+            file = raw_input("Put the name of the csv file: ")
+            if file == "":
+                break
+            files.append(file+".csv")
+
+        path = raw_input("Put the path to the files: ")
+
 
     dbExist = create_DB()
     if not dbExist:
-        prepare_info_for_db(path, files)
+        if files != [] and path != "":
+            prepare_info_for_db(path, files)
 
 
 main()

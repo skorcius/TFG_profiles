@@ -28,7 +28,7 @@ def run_query(query=''):
 
             return data
         except _mysql_exceptions.DataError:
-            print "ERROR: No se ha podido ejecutar la sentencia '%s' " % query
+            print "ERROR: SQL Command can't execute '%s' " % query
 
 
 

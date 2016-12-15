@@ -35,7 +35,7 @@ def prepare_info_for_db(path="", files=[]):
                 inserts_lines_acta(csvFile)
 
         except IOError:
-            print "ERROR: Fichero no encontrado"
+            print "ERROR: File ({0}) not found" % filename
 
 
 def enum(**enums):
@@ -375,6 +375,8 @@ def insert_t_valorsInfo(valors=""):
             i_query = i_query + ",('%s')" % valor
 
     run_query(i_query)
+
+# ---------------------------------------------------------------------------------------- #
 
 def main():
     #files = ['dades_acces.csv','assig_sel.csv', 'dades_matricula.csv', 'linies_acta.csv']

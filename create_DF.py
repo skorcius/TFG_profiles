@@ -1,7 +1,13 @@
 from con_SQL import *
 from alumn import *
-import numpy
+import numpy as np
 import pandas as pd
+
+
+import matplotlib.pyplot as plt
+from sklearn import datasets
+from sklearn.cluster import KMeans
+import sklearn.metrics as sm
 
 
 
@@ -28,4 +34,30 @@ def create_data_frame():
     print df
 
 
-create_data_frame()
+# 2 clusters (0 abandonen, 1 continuen) o al reves
+def do_clustering(data):
+    return
+
+
+
+def do_decision_tree(data):
+    return
+
+
+
+def do_assoc_rules(data):
+    return
+
+
+
+
+
+
+def test_clustering():
+    return
+
+
+
+
+
+test_clustering()

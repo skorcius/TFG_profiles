@@ -104,7 +104,7 @@ class Alumn:
 
     def set_renounce(self):
         data = run_query("SELECT * FROM alumne_assig WHERE id_alumne = %s and any1 = %s" \
-                         %(self.id_alu[0], self.first_year+1))
+                         % (self.id_alu[0], self.first_year+1))
 
         if len(data) > 1:
             self.renounce = False

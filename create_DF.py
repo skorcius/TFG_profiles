@@ -30,10 +30,21 @@ def create_data_frame():
 
     df = pd.DataFrame(data=data, columns=['ALUMN', 'RENOUNCE', 'MITJA_EXP', 'MITJA_SEL', 'CONV', 'CENTRE'])
     print df
+    print "\n\n------------------------------------------------------------\n\n"
+
+    do_clustering(df)
 
 
 # 2 clusters (0 abandonen, 1 continuen) o al reves!!
 def do_clustering(data):
+
+    km = KMeans(2, init='k-means++', random_state=3425)  # initialize
+    km.fit(data[['MITJA_EXP','MITJA_SEL']])
+    data['RENOUNCE_PRED'] = km.predict(data[['MITJA_EXP','MITJA_SEL']])
+    data.groupby(['RENOUNCE','RENOUNCE_PRED']).RENOUNCE.count()
+    print pd.crosstab(data.RENOUNCE, data.RENOUNCE_PRED, rownames=['RENOUNCE'], colnames=['RENOUNCE_PRED'])
+
+    print data
     return
 
 

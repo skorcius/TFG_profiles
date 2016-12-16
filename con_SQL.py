@@ -64,3 +64,10 @@ def execute_insert(insert=''):
     conn.close()
 
     return id
+
+
+def define_bd_user (user, password, host, nameBD='profiles'):
+    infoDB['user'] = user
+    infoDB['passwd'] = password
+    infoDB['host'] = host
+    infoDB['db'] = nameBD

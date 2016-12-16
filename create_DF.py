@@ -34,7 +34,7 @@ def create_data_frame():
     print df
 
 
-# 2 clusters (0 abandonen, 1 continuen) o al reves
+# 2 clusters (0 abandonen, 1 continuen) o al reves!!
 def do_clustering(data):
     return
 
@@ -54,10 +54,12 @@ def do_assoc_rules(data):
 
 
 def test_clustering():
+
+
     return
 
 
 
 
 
-test_clustering()
+create_data_frame()

@@ -7,31 +7,35 @@ from con_SQL import *
 
 def prepare_info_for_db(path="", files=[]):
 
+    assig_sel = ['ID_ALU','PLA','NOM','CODI_RUCT','ANY_PROVA','CONV_PROVA','FASE','CODI_MATERIA','NOM_MATERIA','PRESENTAT','NOTA']
+    dades_acces = ['ID_ALU','PLA','NOM','CODI_RUCT','ANY_INICI_ESTUDIS','ORDRE_PREFERENCIA_PREINSCRIPCIO','NOTA_ACCES_PREINSCRIPCIO',
+                   'TIPUS_ACCES','NOM_TIPUS','SUBACCES','NOM_SUBACCES','ANY_ACCES','CONV_ACCES','UNIVERSITAT_PROVA','NOTA_PROVA',
+                   'ANY_BATXILLER','CONV_BATXILLER','CENTRE_BATXILLER','MITJA_EXPEDIENT']
+    linies_acta=['ID_ALU','PLA','NOM','CODI_RUCT','ASSIG','CURS','TIPUS','CREDITS','NUM_MATRIC','ANY','CONVOCATORIA',
+                     'PRESENTAT','MHONOR','NOTA','QUALIFICACIO']
+    dades_matricula=['ID_ALU','PLA','NOM','CODI_RUCT','ANY','CRED_MAT_TOTAL','CRED_1_MAT','CRED_2_MAT','CRED_3_MAT',
+                 'CRED_SUPERATS','CRED_NO_SUPERAT','CRED_RECONEGUTS','CRED_PRESENTAT','CRED_NOPRESENTAT']
+
+
     for file in files:
         filename=path+file
 
-        csvFile = csv.reader(open(filename, 'r'), delimiter=",")
+        csvFile = csv.reader(open(filename, 'rU'), delimiter=",")
 
         try:
-            rowNum=0
-            header=""
-            for row in csvFile:
-                for item in row:
-                    header = header + item + ','
-                break
-            header = header[0:len(header)-1]
+            header = next(csvFile)
+            header[0] = header[0].strip('\xef\xbb\xbf')
 
-            if header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY_PROVA,CONV_PROVA,FASE,CODI_MATERIA,NOM_MATERIA,PRESENTAT,NOTA":
+            if header == assig_sel:
                 inserts_assig_sel(csvFile)
-            elif header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY_INICI_ESTUDIS,ORDRE_PREFERENCIA_PREINSCRIPCIO," \
-                           "NOTA_ACCES_PREINSCRIPCIO,TIPUS_ACCES,NOM_TIPUS,SUBACCES,NOM_SUBACCES,ANY_ACCES,CONV_ACCES," \
-                           "UNIVERSITAT_PROVA,NOTA_PROVA,ANY_BATXILLER,CONV_BATXILLER,CENTRE_BATXILLER,MITJA_EXPEDIENT":
+
+            elif header == dades_acces:
                 inserts_dades_acces(csvFile)
-            elif header == "ID_ALU,PLA,NOM,CODI_RUCT,ANY,CRED_MAT_TOTAL,CRED_1_MAT,CRED_2_MAT,CRED_3_MAT," \
-                           "CRED_SUPERATS,CRED_NO_SUPERAT,CRED_RECONEGUTS,CRED_PRESENTAT,CRED_NOPRESENTAT":
+
+            elif header == dades_matricula:
                 inserts_dades_matricula(csvFile)
-            elif header == "ID_ALU,PLA,NOM,CODI_RUCT,ASSIG,CURS,TIPUS,CREDITS,NUM_MATRIC,ANY,CONVOCATORIA," \
-                           "PRESENTAT,MHONOR,NOTA,QUALIFICACIO":
+
+            elif header == linies_acta:
                 inserts_lines_acta(csvFile)
 
         except IOError:
@@ -379,27 +383,27 @@ def insert_t_valorsInfo(valors=""):
 # ---------------------------------------------------------------------------------------- #
 
 def main():
-    #files = ['dades_acces.csv','assig_sel.csv', 'dades_matricula.csv', 'linies_acta.csv']
+
     files = []
-    #path = "/home/joan/Documents/csv/"
-    path = None
+    path = ""
 
-    nFiles = raw_input("Do you want to import new data (s/n)? ")
-    if nFiles == "s":
+    if raw_input("Do you want to import new data (s/n)? ") == "s":
 
-        while True:
-            file = raw_input("Put the name of the csv file: ")
-            if file == "":
-                break
-            files.append(file+".csv")
+        files = raw_input("\tPut the name of the csv files separated with ',': ").split(',')
+        files = [s.strip(' ') for s in files]
+        files = [s+".csv" for s in files]
 
-        path = raw_input("Put the path to the files: ")
+        path = raw_input("\tPut the path to the files: ")
+        if not path.endswith('/'):
+            path += '/'
 
+        #REMOVE THAT SHIT
+        path = '/Users/Joan/Desktop/'
+        files = ['f1.csv','f2.csv','f3.csv','f4.csv']
 
     dbExist = create_DB()
-    if not dbExist:
-        if files != [] and path != "":
-            prepare_info_for_db(path, files)
+    if files != [] and path != "":
+        prepare_info_for_db(path, files)
 
 
 main()

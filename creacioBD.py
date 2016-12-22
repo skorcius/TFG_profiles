@@ -397,9 +397,7 @@ def main():
         if not path.endswith('/'):
             path += '/'
 
-        #REMOVE THAT SHIT
-        path = '/Users/Joan/Desktop/'
-        files = ['f1.csv','f2.csv','f3.csv','f4.csv']
+
 
     dbExist = create_DB()
     if files != [] and path != "":

@@ -39,6 +39,8 @@ def create_data_frame():
     print "\n\n------------------------------------------------------------\n\n"
 
     do_clustering(df)
+    do_decision_tree(df)
+    do_assoc_rules(df)
 
 
 def do_clustering(data):
@@ -80,7 +82,7 @@ def do_clustering(data):
     handles, labels = ax.get_legend_handles_labels()
 
     _ = ax.legend(handles, labels, loc="upper left")
-    plt.show()
+    #plt.show()
 
 
     #Recover the value of CONV
@@ -92,6 +94,12 @@ def do_clustering(data):
 def do_decision_tree(data):
 
     clf = sk.RandomForestClassifier(n_estimators=100)
+    clf = clf.fit(data, [2,3,4])
+
+    print clf
+
+
+
 
     return
 
@@ -101,14 +109,6 @@ def do_assoc_rules(data):
     return
 
 
-
-
-
-
-def test_clustering():
-
-
-    return
 
 
 

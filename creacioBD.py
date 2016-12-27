@@ -374,9 +374,9 @@ def insert_t_valorsInfo(valors=""):
     for valor in valors.split():
         if primer:
            primer = False
-           i_query = i_query + "('%s')" % valor
+           i_query += "('%s')" % valor
         else:
-            i_query = i_query + ",('%s')" % valor
+            i_query += ",('%s')" % valor
 
     run_query(i_query)
 

@@ -15,10 +15,12 @@ def run_query(query=''):
         try:
             conn = MySQLdb.connect(**infoDB)    #Connect to DB
             cursor = conn.cursor()              #Create a cursor
+
+            cursor.execute("SET NAMES utf8mb4;")
             cursor.execute(query)               #Make the query
 
             if query.upper().startswith('SELECT'):
-                data = cursor.fetchall()        #Bring results from select
+                data = cursor.fetchall()       #Bring results from select
             else:
                 conn.commit()                   #Commit the query if it's not a select
                 data = None

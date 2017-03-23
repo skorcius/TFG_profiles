@@ -36,7 +36,7 @@ class Alumn:
 
         if len(data) == 1:
             self.p_alumn['mitja_exp'] = data[0][0]
-            self.p_alumn['centre']  = data[0][1]
+            self.p_alumn['centre']  = str(data[0][1])
             if data[0][2] == None:
                 self.p_alumn['nota_ac_pre'] = 0
             else:

@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
+
 from alumn import *
 import pandas as pd
 import numpy as np
 
-
+from sklearn_pandas import DataFrameMapper
 
 
 import matplotlib.pyplot as plt
@@ -38,13 +40,15 @@ def create_data_frame():
     print df
     print "\n\n------------------------------------------------------------\n\n"
 
+
     do_clustering(df)
     do_decision_tree(df)
     do_assoc_rules(df)
 
 
-def do_clustering(data):
+def do_clustering(data_o):
 
+    data = pd.DataFrame.copy(data_o)
     #Convert CONV to INT before Kmeans, then recover first value
     d_conv = {}
     key = 1
@@ -69,7 +73,7 @@ def do_clustering(data):
     print pd.crosstab(data.RENOUNCE, data.RENOUNCE_PRED, rownames=['RENOUNCE'], colnames=['RENOUNCE_PRED'])
 
 
-    #Trying to plot clustering
+    #Plot clustering
     fig, ax = plt.subplots()
 
     print "\n\n"
@@ -88,19 +92,36 @@ def do_clustering(data):
     #Recover the value of CONV
     data['CONV'] = [d_conv[k] for k in data['CONV']]
 
+    return data
+
 
 
 #Random forest
-def do_decision_tree(data):
+def do_decision_tree(data_o):
+
+
+    #Decidir com agafar es conjunts de proves
+    data = pd.DataFrame.copy(data_o)
+
+    dfm = DataFrameMapper(data)
+
+    print '----- !! -----'
+    print dfm
 
     clf = sk.RandomForestClassifier(n_estimators=100)
-    clf = clf.fit(data, [2,3,4])
 
-    print clf
+    #print clf
 
+    #1. Crear dataframes x 'train' i x 'test'
 
+    #DF train
+    features = data.columns[:6]
+    y = pd.factorize(data['RENOUNCE'])[0]
 
+    clf.fit(dfm[features], y)
 
+    #DF test, Comprovar els resultats
+    #clf.predict(test[features])
     return
 
 

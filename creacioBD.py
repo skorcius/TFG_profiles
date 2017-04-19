@@ -5,6 +5,9 @@ import _mysql_exceptions
 from con_SQL import *
 
 
+
+
+
 def prepare_info_for_db(path="", files=[]):
 
     assig_sel = ['ID_ALU','PLA','NOM','CODI_RUCT','ANY_PROVA','CONV_PROVA','FASE','CODI_MATERIA','NOM_MATERIA','PRESENTAT','NOTA']
@@ -16,7 +19,36 @@ def prepare_info_for_db(path="", files=[]):
     dades_matricula=['ID_ALU','PLA','NOM','CODI_RUCT','ANY','CRED_MAT_TOTAL','CRED_1_MAT','CRED_2_MAT','CRED_3_MAT',
                  'CRED_SUPERATS','CRED_NO_SUPERAT','CRED_RECONEGUTS','CRED_PRESENTAT','CRED_NOPRESENTAT']
 
+    # ---------------------------
+    def order_files(files):
+        files_order=['','','','']
+        for file in files:
+            filename = path + file
 
+            csvFile = csv.reader(open(filename, 'rU'), delimiter=",")
+
+            try:
+                header = next(csvFile)
+                header[0] = header[0].strip('\xef\xbb\xbf')
+
+                if header == assig_sel:
+                    files_order[1] = file
+
+                elif header == dades_acces:
+                    files_order[0] = file
+
+                elif header == dades_matricula:
+                    files_order[2] = file
+
+                elif header == linies_acta:
+                    files_order[3] = file
+
+            except IOError:
+                print "ERROR: File ({0}) not found" % filename
+        return files_order
+    # ---------------------
+
+    files = order_files(files)
     for file in files:
         filename=path+file
 
@@ -384,8 +416,8 @@ def insert_t_valorsInfo(valors=""):
 
 def main():
 
-    files = []
-    path = ""
+    files = ['assig_sel.csv','dades_acces.csv','dades_matricula.csv','linies_acta.csv']
+    path = "Documents/"
 
     if raw_input("Do you want to import new data (s/n)? ") == "s":
 

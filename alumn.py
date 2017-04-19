@@ -14,6 +14,7 @@ class Alumn:
         #Information about selectivity
         self.n_pacces = []
         self.a_pacces = []
+        self.ca_pacces = []
         self.f_pacces = []
 
         self.p_pacces = {'mitja':'', 'any1':'', 'any2':'', 'conv':'', 'subacc':'', 'nom_subacc':'', 'uni':''}
@@ -65,14 +66,15 @@ class Alumn:
                 self.p_pacces['nom_subacc'] = data[0][5]
                 self.p_pacces['uni'] = data[0][6]
 
-            data = run_query("select nota, assig_sel.nom, t_valors.valor from assig_prova join assig_sel "\
+            data = run_query("select nota, assig_sel.nom, t_valors.valor, assig_sel.codi from assig_prova join assig_sel "\
                              "on assig_prova.id_assig = assig_sel.codi join t_valors on t_valors.id = assig_prova.fase"\
                              " where assig_prova.id_prova = %s" %self.id_test)
 
             for row in data:
-                self.n_pacces.append(row[0])
-                self.a_pacces.append(row[1])
-                self.f_pacces.append(row[2])
+                self.n_pacces.append(str(row[0]))
+                self.a_pacces.append(str(row[1]))
+                self.f_pacces.append(str(row[2]))
+                self.ca_pacces.append(str(row[3]))
 
 
     def set_degree_profile(self):
@@ -137,9 +139,9 @@ class Alumn:
             str += "\n"
 
         if self.renounce:
-            str += "\n \t\t El alumno ha abandonado el grado"
+            str += "\n \t\t L'alumne ha abandonat el grau"
         else:
-            str += "\n \t\t El alumno sigue con el grado"
+            str += "\n \t\t L'alumne continua amb el grau"
 
         str += "\n\n"
         return str

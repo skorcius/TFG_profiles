@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="34e9ad0a-3f8f-4227-b41d-0389238edfa3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alumn.py" afterPath="$PROJECT_DIR$/alumn.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/creacioBD.py" afterPath="$PROJECT_DIR$/creacioBD.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/create_DF.py" afterPath="$PROJECT_DIR$/create_DF.py" />
     </list>
@@ -29,8 +28,8 @@
       <file leaf-file-name="creacioBD.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/creacioBD.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-336">
-              <caret line="47" column="26" lean-forward="false" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+            <state relative-caret-position="4477">
+              <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -39,8 +38,8 @@
       <file leaf-file-name="con_SQL.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/con_SQL.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+            <state relative-caret-position="737">
+              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding>
                 <element signature="e#25#39#0" expanded="true" />
               </folding>
@@ -48,10 +47,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="cursors.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/cursors.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8288">
+              <caret line="225" column="0" lean-forward="false" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="alumn.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/alumn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
+            <state relative-caret-position="2812">
               <caret line="76" column="47" lean-forward="false" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
               <folding />
             </state>
@@ -61,8 +70,8 @@
       <file leaf-file-name="create_DF.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/create_DF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="732">
-              <caret line="198" column="23" lean-forward="false" selection-start-line="198" selection-start-column="23" selection-end-line="198" selection-end-column="23" />
+            <state relative-caret-position="-391">
+              <caret line="264" column="14" lean-forward="false" selection-start-line="264" selection-start-column="9" selection-end-line="264" selection-end-column="14" />
               <folding>
                 <element signature="e#25#44#0" expanded="true" />
               </folding>
@@ -84,6 +93,8 @@
       <find>RandomForestClassifier</find>
       <find>dict()</find>
       <find>id_test</find>
+      <find>CENTRE_BATX</find>
+      <find>create da</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -95,9 +106,9 @@
       <list>
         <option value="$PROJECT_DIR$/dades_acces.xml" />
         <option value="$PROJECT_DIR$/alumne.py" />
-        <option value="$PROJECT_DIR$/con_SQL.py" />
-        <option value="$PROJECT_DIR$/creacioBD.py" />
         <option value="$PROJECT_DIR$/alumn.py" />
+        <option value="$PROJECT_DIR$/creacioBD.py" />
+        <option value="$PROJECT_DIR$/con_SQL.py" />
         <option value="$PROJECT_DIR$/create_DF.py" />
       </list>
     </option>
@@ -122,8 +133,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -453,7 +464,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490293052421</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="DF">
+      <created>1492620205233</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1492620205233</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -469,10 +487,10 @@
     <frame x="0" y="31" width="3200" height="1769" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12202189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12363168" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944405" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329303" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23747426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23747426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25248933" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2859025" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -511,17 +529,11 @@
     <MESSAGE value="Eliminació de csvs" />
     <MESSAGE value="Alumne .toString actualitzat" />
     <MESSAGE value="RandomForest" />
-    <option name="LAST_COMMIT_MESSAGE" value="RandomForest" />
+    <MESSAGE value="DF" />
+    <option name="LAST_COMMIT_MESSAGE" value="DF" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/creacioBD.py</url>
-          <line>24</line>
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -532,7 +544,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="75" />
+      <option name="time" value="80" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -795,43 +807,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/cursors.py" />
     <entry file="file://$PROJECT_DIR$/assig_sel.csv" />
     <entry file="file://$PROJECT_DIR$/dades_acces.csv" />
     <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/connections.py" />
     <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/MySQLdb/connections.py" />
     <entry file="file://$PROJECT_DIR$/linies_acta.csv" />
     <entry file="file://$PROJECT_DIR$/dades_matricula.csv" />
+    <entry file="file://$PROJECT_DIR$/alumn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2812">
+          <caret line="76" column="47" lean-forward="false" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/dist-packages/MySQLdb/cursors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8288">
+          <caret line="225" column="0" lean-forward="false" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creacioBD.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4477">
+          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/con_SQL.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+        <state relative-caret-position="737">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/creacioBD.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-336">
-          <caret line="47" column="26" lean-forward="false" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/alumn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="76" column="47" lean-forward="false" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/create_DF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="732">
-          <caret line="198" column="23" lean-forward="false" selection-start-line="198" selection-start-column="23" selection-end-line="198" selection-end-column="23" />
+        <state relative-caret-position="-391">
+          <caret line="264" column="14" lean-forward="false" selection-start-line="264" selection-start-column="9" selection-end-line="264" selection-end-column="14" />
           <folding>
             <element signature="e#25#44#0" expanded="true" />
           </folding>

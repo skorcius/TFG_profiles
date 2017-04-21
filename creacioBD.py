@@ -264,7 +264,7 @@ def create_DB(nameDB="profiles"):
     dbExist = False
     try:
         cursor=conn.cursor()
-        sql="CREATE DATABASE %s" % nameDB
+        sql="CREATE DATABASE %s CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci'" % nameDB
         cursor.execute(sql)
         cursor.close()
 

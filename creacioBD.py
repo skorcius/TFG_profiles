@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import csv
 import _mysql_exceptions
-from con_SQL import *
-
-
-
-
+import csv
+from lib.con_SQL import *
 
 def prepare_info_for_db(path="", files=[]):
 

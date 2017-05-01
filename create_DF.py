@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from heapq import merge
 from sklearn_pandas import DataFrameMapper
-
+import lib.apriori
 
 import matplotlib.pyplot as plt
 from sklearn import datasets

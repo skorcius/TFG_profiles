@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from con_SQL import *
+from lib.con_SQL import *
 
 class Alumn:
 

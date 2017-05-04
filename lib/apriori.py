@@ -13,7 +13,7 @@ def subsets(itemset):
 def itemset_from_data(data):
     itemset = set()
     transaction_list = list()
-    for row in data:
+    for row in data.values:
         transaction_list.append(frozenset(row))
         for item in row:
             if item:
